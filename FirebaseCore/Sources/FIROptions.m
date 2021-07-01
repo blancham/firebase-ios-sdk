@@ -29,6 +29,8 @@ NSString *const kFIRDatabaseURL = @"DATABASE_URL";
 NSString *const kFIRStorageBucket = @"STORAGE_BUCKET";
 // The key to locate the expected bundle identifier in the plist file.
 NSString *const kFIRBundleID = @"BUNDLE_ID";
+// The key to locate the expected shared container identifier in the plist file.
+NSString *const kFIRSharedContainerID = @"SHARED_CONTAINER_ID";
 // The key to locate the project identifier in the plist file.
 NSString *const kFIRProjectID = @"PROJECT_ID";
 
@@ -330,6 +332,15 @@ static dispatch_once_t sDefaultOptionsDictionaryOnceToken;
 - (void)setBundleID:(NSString *)bundleID {
   [self checkEditingLocked];
   _optionsDictionary[kFIRBundleID] = [bundleID copy];
+}
+
+- (NSString *)sharedContainerID {
+  return self.optionsDictionary[kFIRSharedContainerID];
+}
+
+- (void)setSharedContainerID:(NSString *)sharedContainerID {
+  [self checkEditingLocked];
+  _optionsDictionary[kFIRSharedContainerID] = [sharedContainerID copy];
 }
 
 - (void)setAppGroupID:(NSString *)appGroupID {
